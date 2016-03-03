@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OdeToFood.Models;
 
 namespace OdeToFood.Controllers
 {
@@ -19,7 +20,11 @@ namespace OdeToFood.Controllers
         {
             ViewBag.Message = "Your app description page.";
 
-            return View();
+            AboutModel clsAbout = new AboutModel();
+            clsAbout.Name = "Ketan Naik";
+            clsAbout.Location = "London United Kingdom";
+
+            return View(clsAbout);
         }
 
         public ActionResult Contact()
