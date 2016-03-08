@@ -6,12 +6,11 @@ using System.Web.Mvc;
 
 namespace OdeToFood.Controllers
 {
+   
     public class CuisineController : Controller
     {
         //
         // GET: /Cuisine/
-
-        [HttpPost]
         public ActionResult Search(string name = "French")
         {
 
@@ -19,11 +18,9 @@ namespace OdeToFood.Controllers
             return Content(message);
         }
 
-        [HttpGet]
-        public ActionResult Search()
-        {
-            return Content("Get method Called");
-        }
+
+
+       
 
     }
 }
