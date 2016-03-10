@@ -1,0 +1,13 @@
+
+Global.asax file is the configuration file which has all the application level events. It is being inherited by the HttpApplication class.
+
+Goal for Html Helpers : Keep Views simple.
+
+Also you can create Customer Html helpers which will help to keep the views simple.
+
+=========================================================================================================
+Partial Views allows you to keep html and C# code in a file which can be reused across other views.
+
+_PartialView : Here underscore is just a convention which means it is a special type of view.
+
+PartialView is equivalent to UserControl in ASP.NET

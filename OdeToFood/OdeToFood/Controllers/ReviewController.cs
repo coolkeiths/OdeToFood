@@ -10,7 +10,7 @@ namespace OdeToFood.Controllers
     public class ReviewController : Controller
     {
 
-        static List<Review> lstReviews = new List<Review>
+        static List<Review> _lstReviews = new List<Review>
         {
             new Review{
                 ID = 1,
@@ -42,7 +42,7 @@ namespace OdeToFood.Controllers
 
         public ActionResult Index()
         {
-            var d = lstReviews.OrderBy(x => x.ID).ToList();
+            var d = _lstReviews.OrderBy(x => x.ID).ToList();
             return View(d);
         }
 
@@ -85,7 +85,8 @@ namespace OdeToFood.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            var review = _lstReviews.Single(r => r.ID == id);
+            return View(review);
         }
 
         //
@@ -97,8 +98,16 @@ namespace OdeToFood.Controllers
             try
             {
                 // TODO: Add update logic here
+                var review = _lstReviews.Single(x => x.ID == id);
+                if (TryUpdateModel(review))
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(review);
+                }
 
-                return RedirectToAction("Index");
             }
             catch
             {
