@@ -11,9 +11,22 @@ namespace OdeToFood.Controllers
     {
         OdeToFoodDb _db = new OdeToFoodDb();
 
-        public ActionResult Index()
+        public ActionResult Index(string searchTerm = null)
         {
-            var model = _db.Restaurants.ToList();
+
+            var model = _db.Restaurants
+                        .OrderByDescending(r => r.Reviews.Average(x => x.Rating))
+                        .Where(r => searchTerm == null || r.Name.StartsWith(searchTerm))
+                        .Select(r => new RestaurantListViewModel { 
+                        
+                            Name = r.Name,
+                            ID = r.ID,
+                            Country = r.Country ,
+                            City = r.City ,
+                            CountOfReviews = r.Reviews.Count()
+                        });
+
+
             return View(model);
         }
 
