@@ -11,3 +11,17 @@ Partial Views allows you to keep html and C# code in a file which can be reused 
 _PartialView : Here underscore is just a convention which means it is a special type of view.
 
 PartialView is equivalent to UserControl in ASP.NET
+
+=========================================================================================================
+
+Entity Framework (EF) allows us to access relational database using C# or Vb code or any .Net Lanaguage
+
+Using EF, we can work with C# query to database using LINQ (Language Integrated Query)
+
+	- Schema First
+	- Model First
+	- Code First
+	
+Dispose API in .NET is just a simple way of clean up of the resources that are open.
+
+Integrated Security  = SSPI i.e. Connect with process credentials.  
