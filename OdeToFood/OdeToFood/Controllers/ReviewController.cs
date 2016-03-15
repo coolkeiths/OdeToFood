@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,28 +10,35 @@ namespace OdeToFood.Controllers
 {
     public class ReviewController : Controller
     {
+        private OdeToFoodDb _db = new OdeToFoodDb();
 
         //
         // GET: /Review/
 
-        public ActionResult Index()
+        public ActionResult Index([Bind(Prefix="id")] int restaurantId)
         {
+            var restaurant = _db.Restaurants.Find(restaurantId);
+            if(restaurant == null)
+            {
+                return HttpNotFound();
+            }
             
-            return View();
+            return View(restaurant);
         }
 
-        //
-        // GET: /Review/Details/5
 
-        public ActionResult Details(int id)
+        protected override void Dispose(bool disposing)
         {
-            return View();
+            _db.Dispose();
+            base.Dispose(disposing);
         }
+
+        
 
         //
         // GET: /Review/Create
-
-        public ActionResult Create()
+        [HttpGet]
+        public ActionResult Create(int restaurantId)
         {
             return View();
         }
@@ -39,13 +47,19 @@ namespace OdeToFood.Controllers
         // POST: /Review/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(RestaurantReview review)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (ModelState.IsValid)
+                {
+                    // TODO: Add insert logic here
+                    _db.RestaurantReviews.Add(review);
+                    _db.SaveChanges();
+                    return RedirectToAction("Index", new { id = review.RestaurantId });
+                }
+                return View(review);
 
-                return RedirectToAction("Index");
             }
             catch
             {
@@ -58,36 +72,24 @@ namespace OdeToFood.Controllers
 
         public ActionResult Edit(int id)
         {
-            //var review = _lstReviews.Single(r => r.ID == id);
-            return View();
+            var review = _db.RestaurantReviews.Find(id);
+            return View(review);
         }
 
-        //
-        // POST: /Review/Edit/5
+        ////
+        //// POST: /Review/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit([Bind(Exclude = "ReviewerName")]RestaurantReview review)
         {
-            //try
-            //{
-            //    // TODO: Add update logic here
-            //    ////var review = _lstReviews.Single(x => x.ID == id);
-            //    //if (TryUpdateModel(review))
-            //    //{
-            //    //    return RedirectToAction("Index");
-            //    //}
-            //    //else
-            //    //{
-            //    //    return View(review);
-            //    //}
+            if (ModelState.IsValid)
+            {
+                _db.Entry(review).State = EntityState.Modified;
+                _db.SaveChanges();
+                return RedirectToAction("Index", new { id = review.RestaurantId });
 
-            //}
-            //catch
-            //{
-            //    return View();
-            //}
-
-            return View();
+            }
+            return View(review);
         }
 
         //

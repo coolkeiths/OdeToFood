@@ -30,3 +30,6 @@ Database Migration
 
 Enable-Migrations -ContextTypeName DBName
 Update-Database -Verbose 
+
+
+HtmlAttributes are used to provide attributes to html elements such as Title, Id etc...
