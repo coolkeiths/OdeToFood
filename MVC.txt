@@ -30,6 +30,15 @@ Database Migration
 
 Enable-Migrations -ContextTypeName DBName
 Update-Database -Verbose 
+Update-Database -Verbose -Force : Forcefully migrate the database.
 
 
 HtmlAttributes are used to provide attributes to html elements such as Title, Id etc...
+
+
+Required Data annotation is not necessary for Integer column.
+
+
+Validation Attribute is the base class for validation attribute in MVC
+Vaidation Summary will show only those error messages those are not associated with the Model.
+
