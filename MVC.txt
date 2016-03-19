@@ -42,3 +42,12 @@ Required Data annotation is not necessary for Integer column.
 Validation Attribute is the base class for validation attribute in MVC
 Vaidation Summary will show only those error messages those are not associated with the Model.
 
+
+_references.js give reference to commonly used js files so that VS could provide better intellisense while using javascript.
+
+modernizr is needs to run before any html loads up on the browser. It makes older browsers prepare to work with HTML 5 elements i.e. nav, sections
+
+
+Ajax.Beginform ---> asynchronous request to the server 
+Html.BeginForm ---> Synchornous request to the server.
+

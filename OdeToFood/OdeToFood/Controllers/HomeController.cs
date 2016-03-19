@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OdeToFood.Models;
+using PagedList;
 
 namespace OdeToFood.Controllers
 {
@@ -11,20 +12,39 @@ namespace OdeToFood.Controllers
     {
         OdeToFoodDb _db = new OdeToFoodDb();
 
-        public ActionResult Index(string searchTerm = null)
+
+        public ActionResult AutoComplete(string term)
+        {
+            var model = _db.Restaurants
+                        .Where(r => r.Name.Contains(term))
+                        .Select(r => new 
+                        {
+                            label = r.Name
+                        });
+
+            return Json(model, JsonRequestBehavior.AllowGet); 
+        }
+
+        public ActionResult Index(string searchTerm = null, int page = 1)
         {
 
             var model = _db.Restaurants
                         .OrderByDescending(r => r.Reviews.Average(x => x.Rating))
-                        .Where(r => searchTerm == null || r.Name.StartsWith(searchTerm))
-                        .Select(r => new RestaurantListViewModel { 
-                        
+                        .Where(r => searchTerm == null || r.Name.Contains(searchTerm))
+                        .Select(r => new RestaurantListViewModel
+                        {
+
                             Name = r.Name,
                             ID = r.ID,
-                            Country = r.Country ,
-                            City = r.City ,
+                            Country = r.Country,
+                            City = r.City,
                             CountOfReviews = r.Reviews.Count()
-                        });
+                        }).ToPagedList(page, 10);
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_Restaurant",model);
+            }
 
 
             return View(model);

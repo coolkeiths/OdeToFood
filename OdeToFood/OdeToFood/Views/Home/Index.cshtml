@@ -1,30 +1,30 @@
-﻿@model IEnumerable<OdeToFood.Models.RestaurantListViewModel>
+﻿@model IPagedList<RestaurantListViewModel>
 
 @{
     ViewBag.Title = "Home Page";
 }
 
-<form method="get">
+<form method="get" action="@Url.Action("Index")" data-otf-ajax="true" data-otf-target="#RestaurantList">
 
-    <input type="search" name="searchTerm" />
+    <input type="search" name="searchTerm" data-otf-autocomplete="@Url.Action("AutoComplete")" />
 
     <input type="submit" value="Search by Name" />
 
 
 </form>
+@*@using (Ajax.BeginForm(
 
-@foreach (var item in Model)
+        new AjaxOptions
+        {
+            HttpMethod = "get",
+            InsertionMode = InsertionMode.Replace ,
+            UpdateTargetId = "RestaurantList"
+        }
+    ))
 {
-    <div>
+     <input type="search" name="searchTerm" />
 
-        <h4> @item.Name </h4>
-        <div> @item.City ,@item.Country</div>
-        <div>
+    <input type="submit" value="Search by Name" />
+}*@
 
-            Reviews : @item.CountOfReviews 
-        </div>
-        <hr />
-
-    </div>
-    
-}
+@Html.Partial("_Restaurant",Model)

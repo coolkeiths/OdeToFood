@@ -29,6 +29,13 @@ namespace OdeToFood.Migrations
                             new RestaurantReview  {Rating = 9 , Body = "GreatFood!!!",ReviewerName = "Ketan Naik"}
                         }
                  });
+
+
+            for (int i = 0; i < 1000; i++)
+            {
+                context.Restaurants.AddOrUpdate(r => r.Name,
+                    new Restaurant { Name = "Restaurant_" + i.ToString(), City = "NoWhere", Country = "USA" });
+            }
         }
     }
 }
