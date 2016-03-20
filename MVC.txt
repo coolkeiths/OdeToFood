@@ -50,4 +50,25 @@ modernizr is needs to run before any html loads up on the browser. It makes olde
 
 Ajax.Beginform ---> asynchronous request to the server 
 Html.BeginForm ---> Synchornous request to the server.
+=================================================================================================================================
+
+Security and ASP.NET MVC 4
+
+=================================================================================================================================
+
+Authentication
+===============
+
+Forms Authentication : User needs to provide username and password to access the data
+
+OpenID /OAuth : Open Standard authentication and authorization. Will be relying on 3rd party application like Facebook, Gmail, yahoo etc..
+
+Windows Authentication : Typically used by internet application. Also known as Integrated auth. 
+Active directory service domain or other windows accounts to identify users
+
+
+Websecurity is the wrapper around membership functionality. It takes care of dataaccess, cryptography
+and all the other code that you need for forms based authentication
+
+ASPXAUTH cookie is used to determine if a user is authenticated
 

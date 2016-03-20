@@ -6,6 +6,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using OdeToFood.App_Start;
+using WebMatrix.WebData;
 
 namespace OdeToFood
 {
@@ -16,6 +18,7 @@ namespace OdeToFood
     {
         protected void Application_Start()
         {
+            InitializeDB.InitialiseDatabaseConnection();
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

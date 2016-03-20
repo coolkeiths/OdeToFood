@@ -25,6 +25,7 @@ namespace OdeToFood.Controllers
             return Json(model, JsonRequestBehavior.AllowGet); 
         }
 
+        
         public ActionResult Index(string searchTerm = null, int page = 1)
         {
 
@@ -50,6 +51,7 @@ namespace OdeToFood.Controllers
             return View(model);
         }
 
+        
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";
