@@ -27,4 +27,17 @@
     <input type="submit" value="Search by Name" />
 }*@
 
+@{
+    var amount = 100.00m;
+    var date = new DateTime(2002, 10, 11);  
+}
+<div>
+    @amount.ToString("c")
+</div>
+
+<div>
+
+    @date.ToShortDateString()
+</div>
+
 @Html.Partial("_Restaurant",Model)

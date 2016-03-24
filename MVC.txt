@@ -72,3 +72,6 @@ and all the other code that you need for forms based authentication
 
 ASPXAUTH cookie is used to determine if a user is authenticated
 
+
+Output Caching : It allows to store the output of the particular controller action in memory on the web server. Once cached, ASP.Net then responds the future request for the same action just by giving the cache results and avoids executing any of the code inside the action.
+

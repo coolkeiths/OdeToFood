@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using OdeToFood.Models;
 using PagedList;
+using System.Web.UI;
 
 namespace OdeToFood.Controllers
 {
@@ -25,7 +26,8 @@ namespace OdeToFood.Controllers
             return Json(model, JsonRequestBehavior.AllowGet); 
         }
 
-        
+
+        [OutputCache(CacheProfile="Long")]
         public ActionResult Index(string searchTerm = null, int page = 1)
         {
 
