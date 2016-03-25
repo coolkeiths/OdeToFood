@@ -6,13 +6,19 @@
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/themes/base/css")
+        
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
+                    <p class="site-title">
+                        <a href="@Url.Action("Index", "Home")">
+                           <img src="~/Content/images/OdeToFood.png" alt="OdeToFood" style="width:100%" />
+                       </a>
+                    </p>
                 </div>
                 <div class="float-right">
                     <section id="login">
@@ -23,6 +29,7 @@
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Restaurant", "Index","Restaurant")</li>
                         </ul>
                     </nav>
                 </div>
@@ -42,7 +49,7 @@
             </div>
         </footer>
 
-        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/otf")
         @RenderSection("scripts", required: false)
     </body>
 </html>
