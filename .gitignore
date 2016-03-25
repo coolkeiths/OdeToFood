@@ -3,3 +3,6 @@ OdeToFood/packages/*
 OdeToFood/OdeToFood/obj/*
 OdeToFood/OdeToFood.Tests/bin/*
 OdeToFood/OdeToFood.Tests/obj/*
+OdeToFood/OdeToFood.v11.suo
+OdeToFood/OdeToFood/App_Data/OdeToFoodDB.mdf
+OdeToFood/OdeToFood/App_Data/OdeToFoodDB_log.ldf

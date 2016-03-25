@@ -1,0 +1,77 @@
+
+Global.asax file is the configuration file which has all the application level events. It is being inherited by the HttpApplication class.
+
+Goal for Html Helpers : Keep Views simple.
+
+Also you can create Customer Html helpers which will help to keep the views simple.
+
+=========================================================================================================
+Partial Views allows you to keep html and C# code in a file which can be reused across other views.
+
+_PartialView : Here underscore is just a convention which means it is a special type of view.
+
+PartialView is equivalent to UserControl in ASP.NET
+
+=========================================================================================================
+
+Entity Framework (EF) allows us to access relational database using C# or Vb code or any .Net Lanaguage
+
+Using EF, we can work with C# query to database using LINQ (Language Integrated Query)
+
+	- Schema First
+	- Model First
+	- Code First
+	
+Dispose API in .NET is just a simple way of clean up of the resources that are open.
+
+Integrated Security  = SSPI i.e. Connect with process credentials.  
+
+Database Migration
+
+Enable-Migrations -ContextTypeName DBName
+Update-Database -Verbose 
+Update-Database -Verbose -Force : Forcefully migrate the database.
+
+
+HtmlAttributes are used to provide attributes to html elements such as Title, Id etc...
+
+
+Required Data annotation is not necessary for Integer column.
+
+
+Validation Attribute is the base class for validation attribute in MVC
+Vaidation Summary will show only those error messages those are not associated with the Model.
+
+
+_references.js give reference to commonly used js files so that VS could provide better intellisense while using javascript.
+
+modernizr is needs to run before any html loads up on the browser. It makes older browsers prepare to work with HTML 5 elements i.e. nav, sections
+
+
+Ajax.Beginform ---> asynchronous request to the server 
+Html.BeginForm ---> Synchornous request to the server.
+=================================================================================================================================
+
+Security and ASP.NET MVC 4
+
+=================================================================================================================================
+
+Authentication
+===============
+
+Forms Authentication : User needs to provide username and password to access the data
+
+OpenID /OAuth : Open Standard authentication and authorization. Will be relying on 3rd party application like Facebook, Gmail, yahoo etc..
+
+Windows Authentication : Typically used by internet application. Also known as Integrated auth. 
+Active directory service domain or other windows accounts to identify users
+
+
+Websecurity is the wrapper around membership functionality. It takes care of dataaccess, cryptography
+and all the other code that you need for forms based authentication
+
+ASPXAUTH cookie is used to determine if a user is authenticated
+
+
+Output Caching : It allows to store the output of the particular controller action in memory on the web server. Once cached, ASP.Net then responds the future request for the same action just by giving the cache results and avoids executing any of the code inside the action.
+
